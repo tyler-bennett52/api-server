@@ -4,9 +4,10 @@ class Collection {
   constructor(model) {
     this.model = model;
   }
-  async create() {
+  async create(obj) {
     try {
-     const newItem = await this.model.create();
+     const newItem = await this.model.create(obj);
+     return newItem;
     } catch (error) {
       console.error('Error in collection method create');
       return error;

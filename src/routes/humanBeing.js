@@ -26,7 +26,7 @@ router.get('/human/:id', async (req, res, next) => {
 router.post('/human', async (req, res, next) => {
   try {
     console.log('POST body:', req.body);
-    const newHuman = await humanBeingModel.create(req.body);
+    const newHuman = await humanCollection.create(req.body);
     res.status(201).send(newHuman);
   } catch (error) {
     next(error);
@@ -44,7 +44,6 @@ router.put('/human/:id', async (req, res, next) => {
 });
 router.delete('/human/:id', async (req, res, next) => {
   try {
-    // await humanBeingModel.destroy({where: {id: req.params.id}});
     await humanCollection.delete(req.params.id);
     res.status(200).send(`Item #${req.params.id} is no more.`);
   } catch (error) {

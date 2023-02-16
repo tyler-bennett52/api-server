@@ -12,5 +12,7 @@ const db = new Sequelize(DB_URL);
 const humanBeingModel = humanBeingSchema(db, DataTypes);
 const automobileModel = automobileSchema(db, DataTypes);
 const humanCollection = new Collection(humanBeingModel);
+const autoCollection = new Collection(automobileModel);
 
-module.exports = { db, humanBeingModel, automobileModel, humanCollection };
+
+module.exports = { db, humanBeingModel, automobileModel, humanCollection, autoCollection };
