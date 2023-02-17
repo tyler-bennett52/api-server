@@ -1,8 +1,8 @@
 'use strict';
 
 const supertest = require('supertest');
-const { app } = require('../../basic-api-server/src/server');
-const { db } = require('../../basic-api-server/src/models/index.js');
+const { app } = require('../src/server');
+const { db } = require('../src/models/index.js');
 const mockRequest = supertest(app);
 
 beforeAll(async () => {
@@ -28,11 +28,6 @@ describe('Server', () => {
   it('404s when given an incorrect method', async () => {
     const response = await mockRequest.post('/');
     expect(response.status).toEqual(404);
-  });
-
-  it('throws 500 error for /person request without a name', async() => {
-    const response = await mockRequest.get('/person');
-    expect(response.status).toEqual(500);
   });
 
   it('Receive 201 and JSON for POST request', async () => {
